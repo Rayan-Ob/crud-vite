@@ -1,0 +1,76 @@
+.create-form{
+    display: flex;
+    gap: 35px;
+    justify-content: space-between;
+   
+    .right,.left{
+        width: 50%;
+
+    }
+    
+    label {
+        margin-top: 20px;
+
+        img {
+            width: 220px;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
+
+    label,
+    input {
+        display: block;
+    }
+
+    input {
+        width: 100%;
+        margin-top: 10px;
+        height: 35px;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: white;
+        border: none;
+
+    }
+
+    #btn-add {
+        width: 150px;
+        height: 40px;
+        margin: 25px 0;
+    
+        background-color: #e2eaf8;
+        cursor: pointer;
+
+
+
+    }
+
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+
+    }
+
+    .right {
+        label{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed #4880ff;
+            padding: 70px;
+            border-radius: 10px;
+            img{
+                width: 63px;
+                height: 75px;
+            }
+        }
+       
+    }
+
+   
+
+}

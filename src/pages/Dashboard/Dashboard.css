@@ -1,0 +1,10 @@
+.dashbord{
+
+    display: flex;
+    .items{
+        
+        width: 100%;
+        flex-grow: 9;
+    }
+    /* background-color:#f5f6fa ; */
+}

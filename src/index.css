@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif,Arial, Helvetica, sans-serif;
+}
+:root{
+    --body-background : #f5f6fa;
+    --title: rgba(15, 15, 15, 1);
+    --side-bg : white
+}
+/* [data-theme='light']{
+    --body-background : white;
+    --title: rgba(15, 15, 15, 1);
+} */
+
+[data-theme='dark']{
+    --body-background : rgba(15, 15, 15, 1);
+    --title: white;
+    --side-bg : #7b808a;
+
+
+}
+
+body{
+    background-color: var(--body-background);
+}
+
+.color-change{
+    background-color: var(--body-background);
+    color: var(--title);
+}
