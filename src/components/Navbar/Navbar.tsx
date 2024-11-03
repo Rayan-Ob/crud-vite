@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react"
 import "./Navbar.css"
-import axios from "axios"
+// import axios from "axios"
 import SearchBtn from "../SearchBtn/SearchBtn"
 // import axios from "axios"
 // import { Link } from "react-router-dom"
 
 
 function Navbar() {
-  let token = localStorage.getItem("user-token")
+  // let token = localStorage.getItem("user-token")
 
 
   const [theme, settheme] = useState(false)
-  const [dataSearch, setdataSearch] = useState([])
+  // const [dataSearch, setdataSearch] = useState([])
   const handleClick = () => {
     settheme(!theme)
   }
@@ -23,15 +23,6 @@ function Navbar() {
     else {
       (document.querySelector('body') as HTMLElement).setAttribute('data-theme', 'light')
     }
-
-    axios.get("http://vica.website/api/items", {
-      headers: {
-        // Authorization : `Bearer ${JSON.parse(localStorage.getItem("user")).token}`
-        Authorization: `Bearer ${token}`
-
-      }
-    }).then(res => setdataSearch(res.data))
-      .catch(err => console.log(err))
 
   })
   return (
