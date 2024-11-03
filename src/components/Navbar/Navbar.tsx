@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react"
 import "./Navbar.css"
+import axios from "axios"
+import SearchBtn from "../SearchBtn/SearchBtn"
 // import axios from "axios"
 // import { Link } from "react-router-dom"
 
 
 function Navbar() {
+  let token = localStorage.getItem("user-token")
+
 
   const [theme, settheme] = useState(false)
+  const [dataSearch, setdataSearch] = useState([])
   const handleClick = () => {
     settheme(!theme)
   }
@@ -19,10 +24,26 @@ function Navbar() {
       (document.querySelector('body') as HTMLElement).setAttribute('data-theme', 'light')
     }
 
+    axios.get("http://vica.website/api/items", {
+      headers: {
+        // Authorization : `Bearer ${JSON.parse(localStorage.getItem("user")).token}`
+        Authorization: `Bearer ${token}`
+
+      }
+    }).then(res => setdataSearch(res.data))
+      .catch(err => console.log(err))
+
   })
   return (
     <div className="navbar">
-      <input type="search" placeholder="type to search" />
+
+      {/* input search */}
+
+      <div>
+        <SearchBtn/>
+      </div>
+
+      {/* dark and light */}
       <div onClick={handleClick} id="dark">
         <img id='dark-light' src={theme ? "/assets/icons/sun-w.png" : "/assets/icons/moon-icon-0.png"} alt="moon or sun " />
       </div>

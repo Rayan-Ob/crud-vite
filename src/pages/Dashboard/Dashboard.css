@@ -1,10 +1,11 @@
 .dashbord{
-
     display: flex;
+    /* position: relative !important; */
     .items{
-        
-        width: 100%;
-        flex-grow: 9;
+        flex-grow: 2;
+        margin-left: 240px;
+
     }
-    /* background-color:#f5f6fa ; */
-}
+    }
+
+

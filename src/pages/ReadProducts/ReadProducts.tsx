@@ -72,7 +72,6 @@ function ReadProducts() {
             products.map((e, i) => {
               return (
                 <div key={i} className='box-product'>
-                  {/* <td>{e.id}</td> */}
                   <div><img src={e.image_url} alt="" onClick={() => show(e.id)} /></div>
                   <p id="name"> {e.name}</p>
                   <p id="price">${e.price}</p>

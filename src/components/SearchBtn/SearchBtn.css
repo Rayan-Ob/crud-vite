@@ -1,0 +1,30 @@
+.search-bar{
+    input{
+        height: 30px;
+        padding: 18px;
+        width: 370px;
+        border: none;
+        border-radius: 30px;
+        background-color: #f5f6fa;
+    }
+    .relative{
+        position: relative;
+        .absolute{
+            position: absolute;
+            right: 15px;
+            top: 30%;
+            border: none;
+
+        }
+
+    }
+    .search-list{
+        position: absolute;
+        top: 35px;
+        background-color: blue;
+        width: 95%;
+        left: 2%;
+        border-radius: 10px;
+    }
+
+} 
