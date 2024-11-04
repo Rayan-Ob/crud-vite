@@ -33,16 +33,16 @@ function ReadProducts() {
 
   }, [doneDel])
 
-  const show = (id: any) => {
+  const show = (id: string |undefined |number) => {
     navigate(`/details/${id}`)
 
   }
 
-  const edit = (id: any) => {
+  const edit = (id: string |undefined |number) => {
     navigate(`/product/edit/${id}`)
 
   }
-  const del = (id: any) => {
+  const del = (id: string |undefined |number) => {
     axios.delete(`http://vica.website/api/items/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`

@@ -13,67 +13,52 @@ let x : any=[]
 
 
 
-function SearchBtn() {
+function SearchBtn({ resaults }: { resaults?: any }) {
 
-    const [data, setdata] = useState(m)
-    const [activeSearch, setactiveSearch] = useState(m)
+   const [input, setinput] = useState('')
 
+//    const [results, setresults] = useState([])
 
-    useEffect(() => {
-
-        axios.get("http://vica.website/api/items", {
-
-            headers: {
-                // Authorization : `Bearer ${JSON.parse(localStorage.getItem("user")).token}`
-                Authorization: `Bearer ${token}`
-
-            }
-        }).then(res => {setdata(res.data)
-            for(let i =0 ; i<data.length; i++){
-                console.log(data[i].name)
-                x[i] = data[i].name 
-            }
-            // data.map((e,i)=>{
-                
-            // })
-        })
-            .catch(error => console.log(error))
-
-    }, [])
-    // let word : any
-    // console.log(data)
-
-
-    function handleData(e: React.ChangeEvent<HTMLInputElement>) {
-        if (e.target.value == '') {
-            setactiveSearch([])
-            return false
+   const fetchData=(value :any)=>{
+    axios.get("http://vica.website/api/items", {
+        headers: {
+          // Authorization : `Bearer ${JSON.parse(localStorage.getItem("user")).token}`
+          Authorization: `Bearer ${token}`
+  
         }
-        setactiveSearch(x.filter((word :any) => word.includes(e.target.value)).slice(0, 8))
+      })
+      .then(res=>res.data)
+      .then( (res)=> {
+        const result = res.filter((user :any)=>{
+            return value && user && user.name && user.name.toLowerCase( ).includes(value)
+        });
+        resaults(resaults)
+        console.log(result)
+      })
+    //     .catch(error => console.log(error))
 
-    }
+
+   }
+   const handleChange=(value: any)=>{
+    setinput(value)
+    fetchData(value)
+   }
+
+
     return (
         <form className='search-bar'>
             <div className="relative">
-                <input type="search" placeholder="type to search" onChange={(e) => handleData(e)} />
+                <input type="search" placeholder="type to search" 
+                onChange={(e :React.ChangeEvent<HTMLInputElement>)=>handleChange(e.target.value)} />
                 <button className='absolute'><i className="fa-solid fa-magnifying-glass"></i></button>
 
-                {activeSearch.length > 0 && (
-                    <div className='search-list'>
-                        11111
-                        {
-                            activeSearch.map((e : any)=>(
-                                <span>{e}</span>
-                            ))
-                        }
+ 
 
-                    </div>
-
-                )}
+  
 
             </div>
 
-        </form>
+         </form>
     )
 }
 

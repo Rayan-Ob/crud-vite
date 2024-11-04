@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import "./Navbar.css"
 // import axios from "axios"
 import SearchBtn from "../SearchBtn/SearchBtn"
+import ResultsSearch from "../ResultsSearch/ResultsSearch"
 // import axios from "axios"
 // import { Link } from "react-router-dom"
 
@@ -11,7 +12,9 @@ function Navbar() {
 
 
   const [theme, settheme] = useState(false)
-  // const [dataSearch, setdataSearch] = useState([])
+  // const [, setdataSearch] = useState([])
+
+  const [resaults, setresaults] = useState([])
   const handleClick = () => {
     settheme(!theme)
   }
@@ -31,7 +34,9 @@ function Navbar() {
       {/* input search */}
 
       <div>
-        <SearchBtn/>
+        <SearchBtn resaults={setresaults}/>
+        <div><ResultsSearch resaultSearch={resaults}/></div>
+
       </div>
 
       {/* dark and light */}
