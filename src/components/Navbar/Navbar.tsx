@@ -33,13 +33,12 @@ function Navbar() {
 
       {/* input search */}
 
-      <div>
-        <SearchBtn resaults={setresaults}/>
-        <div><ResultsSearch resaultSearch={resaults}/></div>
+      <div className="search-container">
+        <SearchBtn resaults={setresaults} />
+        <ResultsSearch resaultSearch={resaults} />
 
       </div>
 
-      {/* dark and light */}
       <div onClick={handleClick} id="dark">
         <img id='dark-light' src={theme ? "/assets/icons/sun-w.png" : "/assets/icons/moon-icon-0.png"} alt="moon or sun " />
       </div>

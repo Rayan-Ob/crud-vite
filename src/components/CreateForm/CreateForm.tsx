@@ -34,6 +34,7 @@ function CreateForm({ type }: { type?: string }) {
             setdata(res.data);
             setname(res.data.name)
             setprice(res.data.price)
+            setimg(res.data. image_url)
             console.log(res.data)
         }
         )
@@ -55,13 +56,13 @@ function CreateForm({ type }: { type?: string }) {
 
             name: name,
             price: price,
-            image: img,
+            image_url: img,
             _method :"PUT"
 
         } : {
             name: name,
             price: price,
-            image: img}
+            image_url: img}
 
       
 
@@ -108,7 +109,7 @@ function CreateForm({ type }: { type?: string }) {
                 </div>
                 <div className='right'>
                     <label htmlFor="img"> 
-                         <img src={(type)? (data?.img) : "/assets/icons/upload.svg"}/>
+                         <img src={(type)? (data?. image_url) : "/assets/icons/upload.svg"}/>
                          <p>Upload Product Image</p>
                     </label>
                     <input type="file" id="img" style={{ display: "none" }}

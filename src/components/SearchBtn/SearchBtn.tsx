@@ -46,18 +46,18 @@ function SearchBtn({ resaults }: { resaults?: any }) {
 
 
     return (
-        <form className='search-bar'>
+        <div className='search-bar'>
          
                 <input type="search" placeholder="type to search" 
                 onChange={(e :React.ChangeEvent<HTMLInputElement>)=>handleChange(e.target.value)} />
-                <button className='absolute'><i className="fa-solid fa-magnifying-glass"></i></button>
+            <div><i className="fa-solid fa-magnifying-glass"></i></div>
 
  
 
   
 
 
-         </form>
+         </div>
     )
 }
 
