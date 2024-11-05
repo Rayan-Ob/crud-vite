@@ -1,14 +1,16 @@
-import  { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import "./CreateForm.css"
 import { useNavigate, useParams } from 'react-router'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface sendDataObj {
     name?: string,
     price?: string | number,
-    image?: string ,
+    image?: string,
     _method?: string,
-    image_url?: string ,
+    image_url?: string,
     img?: string
 
 }
@@ -34,13 +36,14 @@ function CreateForm({ type }: { type?: string }) {
             setdata(res.data);
             setname(res.data.name)
             setprice(res.data.price)
-            setimg(res.data. image_url)
+            setimg(res.data.image_url)
             console.log(res.data)
         }
         )
             .catch(error => console.log(error))
 
     }, [])
+
 
     function send(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -51,20 +54,21 @@ function CreateForm({ type }: { type?: string }) {
         console.log(img)
 
         let sendData: sendDataObj =
-        
-    ( type)?{
 
-            name: name,
-            price: price,
-            image_url: img,
-            _method :"PUT"
+            (type) ? {
 
-        } : {
-            name: name,
-            price: price,
-            image_url: img}
+                name: name,
+                price: price,
+                image_url: img,
+                _method: "PUT"
 
-      
+            } : {
+                name: name,
+                price: price,
+                image_url: img
+            }
+
+
 
         axios.post((type) ? `http://vica.website/api/items/${params.id}` : "http://vica.website/api/items", sendData
             ,
@@ -75,21 +79,21 @@ function CreateForm({ type }: { type?: string }) {
                 }
             })
 
-            // .then(res => {
-            //     console.log(res.data)
+        // .then(res => {
+        //     console.log(res.data)
 
 
-            // })
+        // })
 
-
-            navigate("/")
+        navigate("/")
 
 
     }
 
     return (
         <div>
-            <form className='create-form' onSubmit={(event: React.FormEvent<HTMLFormElement>) => send(event)}>
+            <form className='create-form' onSubmit={(event: React.FormEvent<HTMLFormElement>) => send(event)} >
+
                 <div className='left'>
                     <div>
                         <label htmlFor="name">Product Name</label>
@@ -104,13 +108,13 @@ function CreateForm({ type }: { type?: string }) {
                             defaultValue={data?.price} />
                     </div>
                     <div>
-                        <input type='submit' value='Create' id='btn-add'></input>
+                        <input type='submit' value='Create' id='btn-add' ></input>
                     </div>
                 </div>
                 <div className='right'>
-                    <label htmlFor="img"> 
-                         <img src={(type)? (data?. image_url) : "/assets/icons/upload.svg"}/>
-                         <p>Upload Product Image</p>
+                    <label htmlFor="img">
+                        <img src={(type) ? (data?.image_url) : "/assets/icons/upload.svg"} />
+                        <p>Upload Product Image</p>
                     </label>
                     <input type="file" id="img" style={{ display: "none" }}
 
