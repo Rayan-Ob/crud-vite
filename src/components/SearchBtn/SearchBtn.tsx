@@ -32,7 +32,7 @@ function SearchBtn({ resaults }: { resaults?: any }) {
         const result = res.filter((user :any)=>{
             return value && user && user.name && user.name.toLowerCase( ).includes(value)
         });
-        resaults(resaults)
+        resaults(result)
         console.log(result)
       })
     //     .catch(error => console.log(error))

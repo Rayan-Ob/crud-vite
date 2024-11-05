@@ -13,6 +13,7 @@ import ProductsDetails from './pages/ProductDetails/ProductsDetails.tsx'
 import CreateProduct from './pages/CreateProduct/CreateProduct.tsx'
 import Favourites from './pages/Favourites/Favourites.tsx'
 import Order from './pages/Order/Order.tsx'
+import EditProduct from './pages/EditProduct/EditProduct.tsx'
 
 
 const router = createBrowserRouter([
@@ -55,7 +56,11 @@ const router = createBrowserRouter([
             path : "create",
             element : <CreateProduct/>
 
-          }
+        },
+        {
+          path : "/product/edit/:id",
+          element: <EditProduct/>
+        }
         ]
         
       
