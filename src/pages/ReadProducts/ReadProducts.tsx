@@ -4,6 +4,8 @@ import "./ReadProduct.css"
 
 import { useNavigate } from "react-router"
 let token = localStorage.getItem("user-token")
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ReadProducts() {
   interface productObj {
@@ -33,16 +35,47 @@ function ReadProducts() {
 
   }, [doneDel])
 
-  const show = (id: string |undefined |number) => {
+  const showEditMessage = () => {
+    toast.success(' Edited', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+
+
+    });
+  };
+
+  const showDelMessage = () => {
+    toast.warn(' Deleted', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+
+
+    });
+  };
+
+
+  const show = (id: string | undefined | number) => {
     navigate(`/details/${id}`)
 
   }
 
-  const edit = (id: string |undefined |number) => {
+  const edit = (id: string | undefined | number) => {
     navigate(`/product/edit/${id}`)
 
   }
-  const del = (id: string |undefined |number) => {
+  const del = (id: string | undefined | number) => {
     axios.delete(`http://vica.website/api/items/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -77,8 +110,33 @@ function ReadProducts() {
                   <p id="price">${e.price}</p>
 
                   <div className="buttons">
-                    <button onClick={() => edit(e.id)} id="edit">edit</button>
-                    <button onClick={() => del(e.id)}><i className="fa-solid fa-trash-can"></i></button></div>
+                    <button onClick={() => {edit(e.id);showEditMessage()}} id="edit">edit</button>
+                    <ToastContainer
+                      position="top-center"
+                      autoClose={10000}
+                      hideProgressBar={false}
+                      newestOnTop={false}
+                      closeOnClick
+                      rtl={false}
+                      pauseOnFocusLoss
+                      draggable
+                      pauseOnHover
+                      theme="light"
+                    />
+                    <button onClick={() => {del(e.id);showDelMessage()}}><i className="fa-solid fa-trash-can"></i></button>
+                    <ToastContainer
+position="top-center"
+autoClose={10000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
+                    </div>
                 </div>
               )
 
