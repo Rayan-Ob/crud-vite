@@ -5,7 +5,7 @@ function ResultsSearch({ resaultSearch }: { resaultSearch?: any }) {
         
 {resaultSearch.map((e : any ,i : any)=>{
 
-    return <div key={i}> {e.name}</div>
+    return <div key={i} className="res-serch"> {e.name}</div>
 }
     
 )

@@ -1,7 +1,11 @@
 import { useNavigate } from 'react-router'
-import axios from 'axios'
+// import axios from 'axios'
 import { NavLink } from 'react-router-dom'
 import "./Sidebar.css"
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+import Logout from '../Logout/Logout';
+
 
 
 interface linksObj {
@@ -20,17 +24,7 @@ interface sidebarProps {
 function Sidebar({ logo1,logo2, links }: sidebarProps) {
     const navigate = useNavigate();
 
-    function logout() {
-        axios.post("http://vica.website/api/logout", null, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("user-token")}`
-            }
-        })
-            .then(res => {
-                console.log(res)
-                navigate("/auth")
-            })
-    }
+  
     return (
         <div className='sidebar'>
             <div>
@@ -51,8 +45,8 @@ function Sidebar({ logo1,logo2, links }: sidebarProps) {
                     })}
                 </div>
             </div>
+            <Logout/>
 
-            <button onClick={logout}>logout</button>
         </div>
     )
 }

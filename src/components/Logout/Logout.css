@@ -1,0 +1,10 @@
+.logout{
+    width: 180px;
+    height: 40px;
+    background-color: rgb(72,128,255);
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
